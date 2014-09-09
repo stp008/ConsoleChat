@@ -2,7 +2,7 @@
  * @author clack008@gmail.com
  */
 
-package week5.chat;
+package week6.chat;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,6 +42,7 @@ public class Client {
 	}
 
 	public void startClient() {
+		System.out.println("Происходит соединение с сервером...");
 		Socket socket = null;
 		BufferedReader in = null;
 		try {
@@ -58,19 +59,15 @@ public class Client {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Соединение с сервером не было установлено.");
 		} finally {
 			try {
 				in.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 			try {
 				socket.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		}
 	}
@@ -93,12 +90,13 @@ public class Client {
 			try {
 				String line;
 				while ((line = console.readLine()) != null) {
+					out.println(line);
+					out.flush();
 					if (EXIT.equalsIgnoreCase(line)) {
+						System.out.println("До свидания.");
 						log.info("Closing chat");
 						break;
 					}
-					out.println(line);
-					out.flush();
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

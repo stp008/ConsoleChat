@@ -2,7 +2,7 @@
  * @author clack008@gmail.com
  */
 
-package week5.chat;
+package week6.chat;
 
 public class PrivateMessage {
 
